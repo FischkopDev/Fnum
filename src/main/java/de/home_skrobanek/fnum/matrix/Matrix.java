@@ -85,7 +85,11 @@ public class Matrix {
      * @param scaling Scalar factor
      */
     public void scale(int scaling){
-        // TODO
+        for(int x = 0; x < getWidth(); x++){
+            for(int y = 0; y < getHeight(); y++){
+                addEntry(x, y, getEntry(x, y)*scaling);
+            }
+        }
     }
 
     /**
@@ -142,7 +146,7 @@ public class Matrix {
      * Recursively computes the determinant of a square matrix using
      * Laplace expansion along the first row.
      *
-     * @param A Square matrix
+     * @param matrix Square matrix
      * @return Determinant of {@code A}
      *
      * @throws IllegalArgumentException if the matrix is not square
