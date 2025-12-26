@@ -66,6 +66,44 @@ public class Matrix {
     }
 
     /**
+     * Transposes this matrix in-place.
+     *
+     * After execution, rows become columns and columns become rows.
+     * The internal storage is updated accordingly.
+     *
+     * @pre Matrix must be rectangular
+     */
+    public void transpose(){
+        // TODO
+    }
+
+    /**
+     * Scales this matrix by a given factor.
+     *
+     * Each entry a_ij is multiplied by {@code scaling}.
+     *
+     * @param scaling Scalar factor
+     */
+    public void scale(int scaling){
+        // TODO
+    }
+
+    /**
+     * Computes the inverse of this matrix in-place.
+     *
+     * The matrix must be square and have a non-zero determinant.
+     *
+     * @throws IllegalArgumentException if the matrix is not square
+     * @throws ArithmeticException if the matrix is singular (determinant = 0)
+     *
+     * @pre Matrix must be square
+     */
+    public void inverse(){
+        // TODO
+    }
+
+
+    /**
      * Returns the value of a matrix entry.
      *
      * @param x Row index (zero-based)
@@ -92,6 +130,14 @@ public class Matrix {
         return getDet(A);
     }
 
+    public int getWidth(){
+        return m;
+    }
+
+    public int getHeight(){
+        return n;
+    }
+
     /**
      * Recursively computes the determinant of a square matrix using
      * Laplace expansion along the first row.
@@ -103,24 +149,27 @@ public class Matrix {
      *
      * @note Time complexity is O(n!), suitable only for small matrices.
      */
-    private double getDet(double[][] A){
-        if(n != m)
-            throw new IllegalArgumentException("Length of matrix has to be equals to height");
+    private double getDet(double[][] matrix){
+        int n_tmp = matrix.length;
+        int m_tmp = matrix[0].length;
 
-        if(n == 1)
-            return A[0][0];
-        else if(n == 2){
-            return A[0][0] * A[1][1] - A[0][1] * A[1][0];
-        }
+        if(n_tmp != m_tmp)
+            throw new IllegalArgumentException("Matrix must be square");
+
+        if(n_tmp == 1)
+            return matrix[0][0];
+        else if(n_tmp == 2)
+            return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
 
         double determinant = 0.0;
 
-        for (int j = 0; j < n; j++) {
-            determinant += Math.pow(-1, j) * A[0][j] * getDet(minor(A, 0, j));
+        for (int j = 0; j < n_tmp; j++) {
+            determinant += Math.pow(-1, j) * matrix[0][j] * getDet(minor(matrix, 0, j));
         }
 
         return determinant;
     }
+
 
     /**
      * Computes the minor matrix obtained by removing a specific row
@@ -132,14 +181,14 @@ public class Matrix {
      * @return The resulting minor matrix
      */
     private double[][] minor(double[][] matrix, int row, int col) {
-        int n = matrix.length;
-        double[][] minor = new double[n - 1][n - 1];
+        int n_tmp = matrix.length;
+        double[][] minor = new double[n_tmp - 1][n_tmp - 1];
 
         int r = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n_tmp; i++) {
             if (i == row) continue;
             int c = 0;
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < n_tmp; j++) {
                 if (j == col) continue;
                 minor[r][c] = matrix[i][j];
                 c++;
