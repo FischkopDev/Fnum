@@ -35,6 +35,11 @@ public class MatrixOperations {
     }
 
     public static Matrix multiplyMatrix(Matrix A, Matrix B){
+        if((A.getHeight() == B.getWidth() && A.getWidth() == B.getHeight())!= true)
+            throw new SameDimensionsException();
+
+        Matrix solution = new Matrix(B.getWidth(), A.getHeight());
+
         return null; //TODO
     }
 
