@@ -1,5 +1,7 @@
 package de.home_skrobanek.fnum.matrix;
 
+import de.home_skrobanek.fnum.vector.Vector;
+
 /**
  * @class Matrix
  * @brief Represents a dense real-valued matrix and provides basic operations.
@@ -47,6 +49,14 @@ public class Matrix {
         this.m = m;
 
         A = new double[n][m];
+    }
+
+    public Matrix(double[][] values){
+        A = values;
+    }
+
+    public Matrix(){
+        throw new RuntimeException("You need to define dimensions for this matrix");
     }
 
     /**
@@ -103,9 +113,31 @@ public class Matrix {
      * @pre Matrix must be square
      */
     public void inverse(){
-        // TODO
+        if((getHeight() == getWidth() && getDet() != 0) != true)
+            throw new IllegalArgumentException("There is no inverse for this matrix");
+
+        Matrix identity = MatrixOperations.makeIdentity(getWidth(), getHeight());
+        //TODO
     }
 
+    public Matrix multiply(Vector x){
+        //TODO
+        return null;
+    }
+
+    public Matrix multiply(Matrix x){
+        //TODO
+        return null;
+    }
+
+    public Matrix copy(){
+        //TODO
+        return null;
+    }
+
+    public boolean isSquare(){
+        return getWidth() == getHeight();
+    }
 
     /**
      * Returns the value of a matrix entry.

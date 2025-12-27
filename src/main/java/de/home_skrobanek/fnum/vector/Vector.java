@@ -40,6 +40,10 @@ public class Vector {
         values = new double[size];
     }
 
+    public Vector(){
+        throw new RuntimeException("You need to specify the dimension of this vector");
+    }
+
     /**
      * Sets the value of a vector entry.
      *
@@ -124,4 +128,30 @@ public class Vector {
     public int size() {
         return values.length;
     }
+
+    public boolean equals(Vector b){
+        assert b.size() == size();
+
+        for(int i = 0; i <b.size(); i++){
+            if(b.getValue(i) != getValue(i))
+                return false;
+        }
+        return true;
+    }
+
+    public boolean equals(Vector b, double tol){//TODO
+        assert b.size() == size();
+
+        for(int i = 0; i <b.size(); i++){
+            if(b.getValue(i) != getValue(i))
+                return false;
+        }
+        return true;
+    }
+
+    //TODO dot()
+    //TODO isSquare()
+    //TODO isSymetric
+    //TODO isPositiveDefinit()
+    //TODO rang()
 }
