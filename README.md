@@ -12,17 +12,17 @@ This library is intended for educational purposes and small-scale numerical comp
 
 ## Features - partly in development
 
-- Create dense matrices of arbitrary size
-- Access and modify individual entries
-- Compute determinant of square matrices
-- Transpose matrices
-- Scale matrices by a scalar factor
-- Compute the inverse of a square matrix
+- Manage abitrary matrices (inverse, determinant, ...)
+- LU/LR-Decomposition
+- Vectors in custom dimensions
 - ...
 
 Fully documented with Javadoc comments
 
 ---
+
+## Contributions
+Whether it’s fixing bugs, improving performance, adding new algorithms, or enhancing documentation, all contributions are appreciated.
 
 ## Installation
 

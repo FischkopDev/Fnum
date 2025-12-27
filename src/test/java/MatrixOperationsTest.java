@@ -34,16 +34,16 @@ public class MatrixOperationsTest {
     @Test
     void testAddMatrix() {
         Matrix A = new Matrix(2, 2);
-        A.addEntry(0, 0, 1);
-        A.addEntry(0, 1, 2);
-        A.addEntry(1, 0, 3);
-        A.addEntry(1, 1, 4);
+        A.setEntry(0, 0, 1);
+        A.setEntry(0, 1, 2);
+        A.setEntry(1, 0, 3);
+        A.setEntry(1, 1, 4);
 
         Matrix B = new Matrix(2, 2);
-        B.addEntry(0, 0, 5);
-        B.addEntry(0, 1, 6);
-        B.addEntry(1, 0, 7);
-        B.addEntry(1, 1, 8);
+        B.setEntry(0, 0, 5);
+        B.setEntry(0, 1, 6);
+        B.setEntry(1, 0, 7);
+        B.setEntry(1, 1, 8);
 
         Matrix solution = MatrixOperations.addMatrix(A, B);
 
