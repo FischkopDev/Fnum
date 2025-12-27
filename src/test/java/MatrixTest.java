@@ -9,15 +9,15 @@ public class MatrixTest {
     void testConstructorAndGetters() {
         Matrix m = new Matrix(2, 3);
 
-        assertEquals(3, m.getWidth());
-        assertEquals(2, m.getHeight());
+        assertEquals(3, m.getColumnCount());
+        assertEquals(2, m.getRowCount());
     }
 
     @Test
     void testAddAndGetEntry() {
         Matrix m = new Matrix(2, 2);
-        m.addEntry(0, 0, 1.5);
-        m.addEntry(1, 1, -2.0);
+        m.setEntry(0, 0, 1.5);
+        m.setEntry(1, 1, -2.0);
 
         assertEquals(1.5, m.getEntry(0, 0));
         assertEquals(-2.0, m.getEntry(1, 1));
@@ -26,7 +26,7 @@ public class MatrixTest {
     @Test
     void testDeterminant1x1() {
         Matrix m = new Matrix(1, 1);
-        m.addEntry(0, 0, 5.0);
+        m.setEntry(0, 0, 5.0);
 
         assertEquals(5.0, m.getDet());
     }
@@ -34,10 +34,10 @@ public class MatrixTest {
     @Test
     void testDeterminant2x2() {
         Matrix m = new Matrix(2, 2);
-        m.addEntry(0, 0, 1);
-        m.addEntry(0, 1, 2);
-        m.addEntry(1, 0, 3);
-        m.addEntry(1, 1, 4);
+        m.setEntry(0, 0, 1);
+        m.setEntry(0, 1, 2);
+        m.setEntry(1, 0, 3);
+        m.setEntry(1, 1, 4);
 
         assertEquals(-2.0, m.getDet());
     }
@@ -45,15 +45,15 @@ public class MatrixTest {
     @Test
     void testDeterminant3x3() {
         Matrix m = new Matrix(3, 3);
-        m.addEntry(0, 0, 6);
-        m.addEntry(0, 1, 1);
-        m.addEntry(0, 2, 1);
-        m.addEntry(1, 0, 4);
-        m.addEntry(1, 1, -2);
-        m.addEntry(1, 2, 5);
-        m.addEntry(2, 0, 2);
-        m.addEntry(2, 1, 8);
-        m.addEntry(2, 2, 7);
+        m.setEntry(0, 0, 6);
+        m.setEntry(0, 1, 1);
+        m.setEntry(0, 2, 1);
+        m.setEntry(1, 0, 4);
+        m.setEntry(1, 1, -2);
+        m.setEntry(1, 2, 5);
+        m.setEntry(2, 0, 2);
+        m.setEntry(2, 1, 8);
+        m.setEntry(2, 2, 7);
 
         assertEquals(-306.0, m.getDet());
     }
@@ -67,10 +67,10 @@ public class MatrixTest {
     @Test
     void testScale() {
         Matrix m = new Matrix(2, 2);
-        m.addEntry(0, 0, 1);
-        m.addEntry(0, 1, 2);
-        m.addEntry(1, 0, 3);
-        m.addEntry(1, 1, 4);
+        m.setEntry(0, 0, 1);
+        m.setEntry(0, 1, 2);
+        m.setEntry(1, 0, 3);
+        m.setEntry(1, 1, 4);
 
         m.scale(2);
 
@@ -83,8 +83,8 @@ public class MatrixTest {
     @Test
     void testTransposeSquareMatrix() {
         Matrix m = new Matrix(2, 2);
-        m.addEntry(0, 1, 3);
-        m.addEntry(1, 0, 4);
+        m.setEntry(0, 1, 3);
+        m.setEntry(1, 0, 4);
 
         m.transpose();
 
@@ -95,10 +95,10 @@ public class MatrixTest {
     @Test
     void testInverseSingularMatrixThrowsException() {
         Matrix m = new Matrix(2, 2);
-        m.addEntry(0, 0, 1);
-        m.addEntry(0, 1, 2);
-        m.addEntry(1, 0, 2);
-        m.addEntry(1, 1, 4);
+        m.setEntry(0, 0, 1);
+        m.setEntry(0, 1, 2);
+        m.setEntry(1, 0, 2);
+        m.setEntry(1, 1, 4);
 
         assertThrows(ArithmeticException.class, m::inverse);
     }
