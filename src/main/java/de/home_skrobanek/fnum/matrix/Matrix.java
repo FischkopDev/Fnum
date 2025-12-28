@@ -223,10 +223,6 @@ public class Matrix {
         return minor;
     }
 
-    // --------------------------------------------------
-    // TODO's
-    // --------------------------------------------------
-
     /**
      * Creates a deep copy of this matrix.
      *
@@ -244,6 +240,10 @@ public class Matrix {
         }
         return B;
     }
+
+    // --------------------------------------------------
+    // TODO's
+    // --------------------------------------------------
 
     /**
      * Multiplies this matrix by another matrix.
