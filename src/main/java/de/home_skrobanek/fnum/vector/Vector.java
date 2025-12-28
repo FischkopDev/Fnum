@@ -149,6 +149,16 @@ public class Vector {
         return true;
     }
 
+    @Override
+    public String toString(){
+        String tmp = "(";
+        for(double value : values){
+            tmp += value + ",";
+        }
+        tmp+=")";
+        return tmp;
+    }
+
     //TODO dot()
     //TODO isSquare()
     //TODO isSymetric

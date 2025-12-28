@@ -24,6 +24,18 @@ public class MatrixTest {
     }
 
     @Test
+    void testEquals(){
+        Matrix m = new Matrix(2, 2);
+        m.setEntry(0, 0, 1);
+        m.setEntry(0, 1, 2);
+        m.setEntry(1, 0, 3);
+        m.setEntry(1, 1, 4);
+
+        Matrix other = m.copy();
+
+        assertTrue(other.equals(m, 1e-12));
+    }
+    @Test
     void testDeterminant1x1() {
         Matrix m = new Matrix(1, 1);
         m.setEntry(0, 0, 5.0);

@@ -235,8 +235,14 @@ public class Matrix {
      * @return A new Matrix object with identical entries to this matrix
      */
     public Matrix copy() {
-        // TODO: implement copy
-        return null;
+        Matrix B = new Matrix(getRowCount(), getColumnCount());
+
+        for (int i = 0; i < getRowCount(); i++){
+            for(int j = 0; j < getColumnCount(); j++){
+                B.setEntry(i,j, getEntry(i,j));
+            }
+        }
+        return B;
     }
 
     /**
