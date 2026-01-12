@@ -29,9 +29,9 @@ public class VectorTest {
     @Test
     void testAddAndGetValue() {
         Vector v = new Vector(3);
-        v.addValue(0, 5.0);
-        v.addValue(1, -2.0);
-        v.addValue(2, 7.5);
+        v.setValue(0, 5.0);
+        v.setValue(1, -2.0);
+        v.setValue(2, 7.5);
 
         assertEquals(5.0, v.getValue(0));
         assertEquals(-2.0, v.getValue(1));

@@ -134,4 +134,6 @@ public class LUDecomposition {
     public Vector solve(Vector b){
         return null; // TODO: implement forward/backward substitution
     }
+
+    //TODO LU separation in threats
 }

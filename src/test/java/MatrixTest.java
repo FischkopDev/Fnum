@@ -40,7 +40,7 @@ public class MatrixTest {
         Matrix m = new Matrix(1, 1);
         m.setEntry(0, 0, 5.0);
 
-        assertEquals(5.0, m.getDet());
+        assertEquals(5.0, m.getLaplacianDeterminant());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class MatrixTest {
         m.setEntry(1, 0, 3);
         m.setEntry(1, 1, 4);
 
-        assertEquals(-2.0, m.getDet());
+        assertEquals(-2.0, m.getLaplacianDeterminant());
     }
 
     @Test
@@ -67,13 +67,13 @@ public class MatrixTest {
         m.setEntry(2, 1, 8);
         m.setEntry(2, 2, 7);
 
-        assertEquals(-306.0, m.getDet());
+        assertEquals(-306.0, m.getLaplacianDeterminant());
     }
 
     @Test
     void testDeterminantNonSquareMatrixThrowsException() {
         Matrix m = new Matrix(2, 3);
-        assertThrows(IllegalArgumentException.class, m::getDet);
+        assertThrows(IllegalArgumentException.class, m::getLaplacianDeterminant);
     }
 
     @Test

@@ -146,6 +146,32 @@ public class Matrix {
     }
 
     /**
+     * Computes the determinant of this matrix using its LR (LU) decomposition.
+     *
+     * This method creates an LUDecomposition of the current matrix,
+     * executes it with a given tolerance to handle nearly singular matrices,
+     * and then computes the determinant as the product of the diagonal elements
+     * of the upper triangular matrix R.
+     *
+     * @param tol Minimum allowed pivot value. Diagonal entries of R smaller
+     *            than this threshold are considered zero, triggering
+     *            an ArithmeticException in the decomposition.
+     * @return Determinant of this matrix
+     *
+     * @throws ArithmeticException if the matrix is (nearly) singular
+     * @pre The matrix must be square
+     * @note This method uses the property that det(A) = det(L) * det(R),
+     *       with det(L) = 1 for lower-triangular L with unit diagonal.
+     */
+    public double getLRDeterminant(double tol){
+        LUDecomposition lu = new LUDecomposition(this);
+        lu.execute(tol);
+
+        return 1 * lu.getDeterminantR();
+    }
+
+
+    /**
      * Recursively computes the determinant of a square matrix using
      * Laplace expansion along the first row.
      *
@@ -155,8 +181,8 @@ public class Matrix {
      *
      * @note Time complexity is O(n!), suitable only for small matrices.
      */
-    public double getDet(){
-        return getDet(A);
+    public double getLaplacianDeterminant(){
+        return getLaplacianDeterminant(A);
     }
 
     /**
@@ -183,7 +209,7 @@ public class Matrix {
     }
 
 
-    private double getDet(double[][] matrix){
+    private double getLaplacianDeterminant(double[][] matrix){
         int n_tmp = matrix.length;
         int m_tmp = matrix[0].length;
 
@@ -198,7 +224,7 @@ public class Matrix {
         double determinant = 0.0;
 
         for (int j = 0; j < n_tmp; j++) {
-            determinant += Math.pow(-1, j) * matrix[0][j] * getDet(minor(matrix, 0, j));
+            determinant += Math.pow(-1, j) * matrix[0][j] * getLaplacianDeterminant(minor(matrix, 0, j));
         }
 
         return determinant;

@@ -52,7 +52,7 @@ public class Vector {
      *
      * @pre pos >= 0
      */
-    public void addValue(int pos, double value) {
+    public void setValue(int pos, double value) {
         assert pos >= 0;
         values[pos] = value;
     }
@@ -96,7 +96,7 @@ public class Vector {
         }
 
         for (int i = 0; i < this.size(); i++)
-            addValue(i, this.getValue(i) + vec.getValue(i));
+            setValue(i, this.getValue(i) + vec.getValue(i));
     }
 
     /**
